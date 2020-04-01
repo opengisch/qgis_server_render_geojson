@@ -10,7 +10,7 @@ The request supports the following parameters:
 
 Path to the GeoJson file. May be a URI or relative to the prefix in the configuration.
 
-Examples:
+##### Examples
 
 Relative to configured prefix path:
 
@@ -30,7 +30,7 @@ GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Ftopic%3Dnaturgefahren
 Path to a qml file. May be a URI or relative to the prefix in the configuration.
 May be overwritten by `POLYGONSTYLE`, `LINESTYLE` or `POINTSTYLE`.
 
-Example:
+##### Example
 
 ```
 STYLE=naturgefahren/base.qml
@@ -50,7 +50,7 @@ POLYGONSTYLE=naturgefahren/polygons.qml
 
 Path to a qml file used for every line in the data. May be a URI or relative to the prefix in the configuration.
 
-Example:
+##### Example
 
 ```
 LINESTYLE=naturgefahren/lines.qml
@@ -60,7 +60,7 @@ LINESTYLE=naturgefahren/lines.qml
 
 Path to a qml file used for every point in the data. May be a URI or relative to the prefix in the configuration.
 
-Example:
+##### Example
 
 ```
 POINTSTYLE=naturgefahren/points.qml
@@ -70,7 +70,7 @@ POINTSTYLE=naturgefahren/points.qml
 
 The bounding box to render. Needs to match the CRS of the data in the provided GeoJSON file.
 
-Example:
+##### Example
 
 ```
 BBOX=2689634.3,1283792.7,2690062.1,1284004.8
@@ -80,7 +80,7 @@ BBOX=2689634.3,1283792.7,2690062.1,1284004.8
 
 The width of the result image in pixels.
 
-Example:
+##### Example
 
 ```
 WIDTH=640
@@ -90,7 +90,7 @@ WIDTH=640
 
 The height of the result image in pixels.
 
-Example:
+##### Example
 
 ```
 HEIGHT=480
@@ -100,7 +100,7 @@ HEIGHT=480
 
 The dpi used to render the symbology.
 
-Example:
+##### Example
 
 ```
 DPI=96
