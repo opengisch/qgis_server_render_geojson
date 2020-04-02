@@ -31,15 +31,25 @@ Path to a qml file. May be a URI or relative to the prefix in the configuration.
 
 The substitution variable `$type` is available which will be replaced with `points`, `lines` or `polygons`.
 
-##### Example
+##### Examples
+
+Static:
 
 ```
 STYLE=naturgefahren/base.qml
 ```
 
+Dynamic:
+
 ```
 STYLE=naturgefahren/$type.qml
 ```
+
+This will lookup up to 3 styles:
+
+ - `naturgefahren/points.qml`
+ - `naturgefahren/lines.qml`
+ - `naturgefahren/polygons.qml`
 
 #### `BBOX`
 
