@@ -15,7 +15,7 @@ Path to the GeoJson file. May be a URI or relative to the prefix in the configur
 Relative to configured prefix path:
 
 ```
-GEOJSON=naturgefahren/data.json
+GEOJSON=naturgefahren%2Fdata.json
 ```
 
 Absolute path (url encoded `https://api.sh.ch/v1/get_geojson?topic=naturgefahren`):
@@ -36,13 +36,13 @@ The substitution variable `$type` is available which will be replaced with `poin
 Static:
 
 ```
-STYLE=naturgefahren/base.qml
+STYLE=naturgefahren%2Fbase.qml
 ```
 
 Dynamic:
 
 ```
-STYLE=naturgefahren/$type.qml
+STYLE=naturgefahren%2F$type.qml
 ```
 
 This will lookup up to 3 styles:
@@ -108,7 +108,7 @@ GET /rendergeojson?GEOJSON=data.json&STYLE=$type.qml&BBOX=2689634.3,1283792.7,26
 Basic request that will create another request to collect data from another resource
 
 ```
-GET /rendergeojson?GEOJSON=https%3A%2F%2Fapi.sh.ch/v1/%2Fget_geojson%3Fregion%3Dschaffhausen&STYLE=https%3A%2F%2Fapi.sh.ch%2Fstyle%3Fnaturgefahren.qml%26type%3F$type&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
+GET /rendergeojson?GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Fregion%3Dschaffhausen&STYLE=https%3A%2F%2Fapi.sh.ch%2Fstyle%3Fnaturgefahren.qml%26type%3F$type&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
 ```
 
 ## Configuration
