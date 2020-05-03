@@ -1,0 +1,20 @@
+[general]
+name=GeoJson Renderer
+qgisMinimumVersion=3.4
+description=This plugins renders geojson files. The file to render is specified as a GET parameter and downloaded or located locally on the server. The qml style to use can be specified through a second parameter.
+version=1.0.0
+author=Matthias Kuhn (OPENGIS.ch)
+email=matthias@opengis.ch
+server=True
+
+about=Render geojson with qml
+
+tracker=https://github.com/opengisch/qgis_server_render_geojson/issues
+repository=https://github.com/opengisch/qgis_server_render_geojson
+tags=server, geojson, render 
+homepage=https://github.com/opengisch/qgis_server_render_geojson
+category=Plugins
+icon=icon.png
+experimental=False
+deprecated=False
+
