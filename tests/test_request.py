@@ -86,14 +86,14 @@ def test_get_no_prefix_path(gj_filter):
 
     assert b'download' in response
 
-def test_get(gj_filter):
-    headers, response = gj_filter.test_request(gj_filter, {
-            'SERVICE': 'RENDERGEOJSON',
-            'GEOJSON': 'polygon.geojson',
-            'STYLE': 'polygons.qml',
-            'WIDTH': '800',
-            'HEIGHT': '600',
-            'BBOX': '1000,2000,1500,2500',
-            })
-
-    assert b'download' in response
+#def test_get(gj_filter):
+#    headers, response = gj_filter.test_request(gj_filter, {
+#            'SERVICE': 'RENDERGEOJSON',
+#            'GEOJSON': 'polygon.geojson',
+#            'STYLE': 'polygons.qml',
+#            'WIDTH': '800',
+#            'HEIGHT': '600',
+#            'BBOX': '1000,2000,1500,2500',
+#            })
+#
+#    assert b'download' in response
