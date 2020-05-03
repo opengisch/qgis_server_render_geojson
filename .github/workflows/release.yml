@@ -10,6 +10,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Deploy to osgeo
       run: |
-        pip install qgis-plugin-ci
+        pip3 install qgis-plugin-ci
         qgis-plugin-ci release ${GITHUB_REF/refs\/tags\//} --github-token ${{ secrets.GITHUB_TOKEN }} --osgeo-username mkuhn --osgeo_password  ${{ secrets.OSGEO_PASSWORD }}
 
