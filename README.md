@@ -59,7 +59,7 @@ Path to a qml file. May be a URI or relative to the prefix in the configuration.
 
 ##### Examples
 
-Static:
+<!-- Static: -->
 
 ```
 STYLE=naturgefahren%2Fbase.qml
