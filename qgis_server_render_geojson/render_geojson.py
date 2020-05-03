@@ -43,11 +43,11 @@ class ParameterError(Exception):
 
 class RenderGeojsonFilter(QgsServerFilter):
 
-    def __init__(self, serverIface):
-        super().__init__(serverIface)
+    def __init__(self, serverIface=None):
+        if serverIface:
+            super().__init__(serverIface)
 
         self.prefix_path = os.environ.get('QGIS_RENDERGEOJSON_PREFIX')
-
 
     def requestReady(self):
         pass
