@@ -136,6 +136,7 @@ class RenderGeojsonFilter(QgsServerFilter):
 
                 settings = QgsMapSettings()
                 settings.setOutputSize(QSize(width, height))
+                settings.setOutputDpi(dpi)
                 settings.setExtent(bbox)
                 settings.setLayers([polygon_layer, line_layer, point_layer])
                 settings.setBackgroundColor(QColor(Qt.transparent))
