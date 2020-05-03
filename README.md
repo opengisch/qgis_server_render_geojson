@@ -55,7 +55,7 @@ GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Ftopic%3Dnaturgefahren
 
 Path to a qml file. May be a URI or relative to the prefix in the configuration.
 
-The substitution variable `$type` is available which will be replaced with `points`, `lines` or `polygons`.
+<!-- The substitution variable `$type` is available which will be replaced with `points`, `lines` or `polygons`. -->
 
 ##### Examples
 
@@ -64,7 +64,7 @@ Static:
 ```
 STYLE=naturgefahren%2Fbase.qml
 ```
-
+<!--
 Dynamic:
 
 ```
@@ -76,7 +76,7 @@ This will lookup up to 3 styles:
  - `naturgefahren/points.qml`
  - `naturgefahren/lines.qml`
  - `naturgefahren/polygons.qml`
-
+-->
 #### `BBOX`
 
 The bounding box to render. Needs to match the CRS of the data in the provided GeoJSON file.
