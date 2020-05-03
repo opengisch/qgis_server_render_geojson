@@ -1,10 +1,10 @@
 # qgis_server_render_geojson
 
-A QGIS Server Plugin to render GeoJSON with a QML styling
+A **QGIS Server Plugin** to render **GEOJSON** with **QML styling**.
 
-With this plugin installed, your QGIS server will be able to render a geojson file to an image. The geojson file can be a local file or downloaded from a network service. A qml file can be provided that is used to style the geojson.
+With this plugin installed, your QGIS server will be able to render a geojson file to a PNG image. The geojson file can be a **local file or downloaded from a network service**. A qml file can be provided to define the rendering style of the geojson.
 
-This is almost like a WMS, except that the source of the data and the symbology are dynamic and must be provided as url parameter. There is also no such thing as "GetCapabilities".
+It works almost like WMS, except that the source of the data and the symbology are dynamic and must be provided as url parameter. There is also no such thing as `GetCapabilities`.
 
 ## Quick start guide: docker-compose
 
