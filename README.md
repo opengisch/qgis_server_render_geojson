@@ -122,19 +122,19 @@ DPI=96
 Basic request that will search data and style in the prefix directory (see configuration)
 
 ```
-GET /rendergeojson?GEOJSON=data.json&STYLE=style.qml&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
+GET /ogc/?SERVICE=RenderGeojson&GEOJSON=data.json&STYLE=style.qml&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
 ```
 
 Basic request that will search data and style in the prefix directory (see configuration)
 
 ```
-GET /rendergeojson?GEOJSON=data.json&STYLE=$type.qml&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
+GET /ogc/?SERVICE=RenderGeojson&GEOJSON=data.json&STYLE=$type.qml&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
 ```
 
 Basic request that will create another request to collect data from another resource
 
 ```
-GET /rendergeojson?GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Fregion%3Dschaffhausen&STYLE=https%3A%2F%2Fapi.sh.ch%2Fstyle%3Fnaturgefahren.qml%26type%3F$type&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
+GET /ogc/?SERVICE=RenderGeojson&GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Fregion%3Dschaffhausen&STYLE=https%3A%2F%2Fapi.sh.ch%2Fstyle%3Fnaturgefahren.qml%26type%3F$type&BBOX=2689634.3,1283792.7,2690062.1,1284004.8&WIDTH=606&HEIGHT=300&DPI=96
 ```
 
 ## Configuration
