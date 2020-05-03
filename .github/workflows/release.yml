@@ -12,5 +12,5 @@ jobs:
     - name: Deploy to osgeo
       run: |
         pip install qgis-plugin-ci
-        qgis-plugin-ci release ${GITHUB_REF/refs\/tags\//} --github-token ${{ secrets.GH_TOKEN }} --osgeo-username mkuhn --osgeo_password  ${{ secrets.OSGEO_PASSWORD }}
+        qgis-plugin-ci release ${GITHUB_REF/refs\/tags\//} --github-token ${{ secrets.GITHUB_TOKEN }} --osgeo-username mkuhn --osgeo_password  ${{ secrets.OSGEO_PASSWORD }}
 
