@@ -1,0 +1,14 @@
+# Trigger the workflow on push or pull request
+on: [push, pull_request]
+
+jobs:
+  test:
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+     
+      - name: create docker
+        run: docker build -t testrunner .docker/testrunner
+
+      - name: run tests
+        run: docker run -v $(pwd):/io/qgis_server_render_geojson testrunner
