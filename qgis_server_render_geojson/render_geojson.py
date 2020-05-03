@@ -59,7 +59,10 @@ class RenderGeojsonFilter(QgsServerFilter):
         """If the path exists locally, relative to the prefix path, return this. If not, try downloading the file."""
         local_path = os.path.join(self.prefix_path, url)
         if not os.path.exists(local_path):
-            local_path, headers = urllib.request.urlretrieve(url)
+            try:
+                local_path, headers = urllib.request.urlretrieve(url)
+            except ValueError:
+                raise ParameterException('The file `url` could not be found locally and not be retrieved as download.')
 
         return local_path
 
