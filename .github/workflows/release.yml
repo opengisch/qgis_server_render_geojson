@@ -1,0 +1,16 @@
+on:
+  push:
+    tags:
+      - v[0-9\.]*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy to osgeo
+      run: |
+        pip install qgis-plugin-ci
+        qgis-plugin-ci release ${GITHUB_REF/refs\/tags\//} --github-token ${{ secrets.GH_TOKEN }} --osgeo-username mkuhn --osgeo_password  ${{ secrets.OSGEO_PASSWORD }}
+
