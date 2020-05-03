@@ -1,0 +1,8 @@
+qgisserver:
+  image: openquake/qgis-server:3.10.4
+  hostname: qgis-server
+  volumes:
+    - ./qgis_server_render_geojson:/io/plugins/qgis_server_render_geojson
+    - ./demodata:/io/data
+  environment:
+    - QGIS_RENDERGEOJSON_PREFIX=/io/data
