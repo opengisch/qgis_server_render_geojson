@@ -1,5 +1,31 @@
 # qgis_server_render_geojson
+
 A QGIS Server Plugin to render GeoJSON with a QML styling
+
+With this plugin installed, your QGIS server will be able to render a geojson file to an image. The geojson file can be a local file or downloaded from a network service. A qml file can be provided that is used to style the geojson.
+
+This is almost like a WMS, except that the source of the data and the symbology are dynamic and must be provided as url parameter. There is also no such thing as "GetCapabilities".
+
+## Quick start guide: docker-compose
+
+```sh
+git clone https://github.com/opengisch/qgis_server_render_geojson.git
+cd qgis_server_render_geojson
+docker-compose up
+```
+
+And navigate to
+
+```
+http://localhost:8080/ogc/?SERVICE=RenderGeojson&STYLE=polygon_outline.qml&WIDTH=300&HEIGHT=600&GEOJSON=polygon.geojson&BBOX=2689574,1283976,2689673,1284099
+```
+
+## Quick start guide: existing qgis server infrastructure
+
+1. Download https://github.com/opengisch/qgis_server_render_geojson/archive/master.zip
+2. Unzip and copy the `qgis_server_render_geojson` folder to a local qgis server plugin path (check: metadata.txt must be in `[plugin_path]/qgis_server_render_geojson/metadata.txt`)
+3. Configure the local plugin path by setting it in apache, nginx, (your favorite webserver) `QGIS_PLUGINPATH=[plugin_path]`
+4. Restart server
 
 ## Request
 
@@ -113,7 +139,4 @@ GET /rendergeojson?GEOJSON=https%3A%2F%2Fapi.sh.ch%2Fv1%2Fget_geojson%3Fregion%3
 
 ## Configuration
 
-```ini
-[RenderGeoJson]
-Prefix=D:\data\rendergeojson
-```
+The prefix path where local (sytle and geojson) files are provided can be defined throug an environment variable `QGIS_RENDERGEOJSON_PREFIX`.
