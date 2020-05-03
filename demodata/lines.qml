@@ -1,9 +1,9 @@
 <!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
 <qgis version="3.10.5-A Coruña" styleCategories="Symbology">
-  <renderer-v2 symbollevels="0" forceraster="0" enableorderby="0" type="singleSymbol">
+  <renderer-v2 symbollevels="0" enableorderby="0" forceraster="0" type="singleSymbol">
     <symbols>
-      <symbol alpha="1" force_rhr="0" type="fill" name="0" clip_to_extent="1">
-        <layer locked="0" pass="0" class="SimpleLine" enabled="1">
+      <symbol clip_to_extent="1" force_rhr="0" name="0" type="line" alpha="1">
+        <layer class="SimpleLine" locked="0" pass="0" enabled="1">
           <prop k="capstyle" v="square"/>
           <prop k="customdash" v="5;4"/>
           <prop k="customdash_map_unit_scale" v="3x:0,0,0,0,0,0"/>
@@ -22,9 +22,9 @@
           <prop k="width_map_unit_scale" v="3x:0,0,0,0,0,0"/>
           <data_defined_properties>
             <Option type="Map">
-              <Option value="" type="QString" name="name"/>
+              <Option value="" name="name" type="QString"/>
               <Option name="properties"/>
-              <Option value="collection" type="QString" name="type"/>
+              <Option value="collection" name="type" type="QString"/>
             </Option>
           </data_defined_properties>
         </layer>
@@ -35,5 +35,5 @@
   </renderer-v2>
   <blendMode>0</blendMode>
   <featureBlendMode>0</featureBlendMode>
-  <layerGeometryType>2</layerGeometryType>
+  <layerGeometryType>1</layerGeometryType>
 </qgis>

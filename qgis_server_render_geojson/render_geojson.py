@@ -62,9 +62,18 @@ class RenderGeojsonFilter(QgsServerFilter):
             try:
                 local_path, headers = urllib.request.urlretrieve(url)
             except ValueError:
-                raise ParameterException('The file `url` could not be found locally and not be retrieved as download.')
+                raise ParameterError('The file `{}` could not be found locally and not be retrieved as download.'.format(url))
 
         return local_path
+
+    def _load_style(self, layer, style):
+        f = QFile(style)
+        f.open(QIODevice.ReadOnly)
+        d = QDomDocument()
+        d.setContent(f)
+        doc = d.documentElement()
+        rw_context = QgsReadWriteContext()
+        layer.readStyle(doc, '', rw_context)
 
     def responseComplete(self):
         request = self.serverInterface().requestHandler()
@@ -103,27 +112,32 @@ class RenderGeojsonFilter(QgsServerFilter):
                 except (ValueError, AttributeError):
                     raise ParameterError('Parameter BBOX must be specified in the form `min_x,min_y,max_x,max_y`.')
 
-                
                 url = geojson
                 geojson_file_name = self._resolve_url(geojson)
-                QgsMessageLog.logMessage(
-                    "RenderGeojson.responseComplete :: Rendering file {}".format(url))
+
+                if '$type' in style:
+                    polygon_style = self._resolve_url(style.replace('$type', 'polygons'))
+                    line_style = self._resolve_url(style.replace('$type', 'lines'))
+                    point_style = self._resolve_url(style.replace('$type', 'points'))
+                else:
+                    polygon_style = self._resolve_url(style)
+                    line_style = polygon_style
+                    point_style = polygon_style
+
                 polygon_layer = QgsVectorLayer(
-                    geojson_file_name, 'polygons', 'ogr')
-                style_path = self._resolve_url(style)
-                QgsMessageLog.logMessage(
-                    "RenderGeojson.responseComplete :: QML file {}".format(style_path))
-                f = QFile(style_path)
-                f.open(QIODevice.ReadOnly)
-                d = QDomDocument()
-                d.setContent(f)
-                doc = d.documentElement()
-                rw_context = QgsReadWriteContext()
-                polygon_layer.readStyle(doc, '', rw_context)
+                    geojson_file_name + '|geometrytype=Polygon', 'polygons', 'ogr')
+                self._load_style(polygon_layer, polygon_style)
+                line_layer = QgsVectorLayer(
+                    geojson_file_name + '|geometrytype=Line', 'lines', 'ogr')
+                self._load_style(line_layer, line_style)
+                point_layer = QgsVectorLayer(
+                    geojson_file_name + '|geometrytype=Point', 'points', 'ogr')
+                self._load_style(point_layer, point_style)
+
                 settings = QgsMapSettings()
                 settings.setOutputSize(QSize(width, height))
                 settings.setExtent(bbox)
-                settings.setLayers([polygon_layer])
+                settings.setLayers([polygon_layer, line_layer, point_layer])
                 settings.setBackgroundColor(QColor(Qt.transparent))
                 renderer = QgsMapRendererParallelJob(settings)
 
