@@ -57,8 +57,13 @@ class RenderGeojsonFilter(QgsServerFilter):
 
     def _resolve_url(self, url):
         """If the path exists locally, relative to the prefix path, return this. If not, try downloading the file."""
-        local_path = os.path.join(self.prefix_path, url)
-        if not os.path.exists(local_path):
+
+        if self.prefix_path:
+            local_path = os.path.join(self.prefix_path, url)
+        else:
+            local_path = None
+
+        if not local_path or not os.path.exists(local_path):
             try:
                 local_path, headers = urllib.request.urlretrieve(url)
             except ValueError:
@@ -167,7 +172,8 @@ class RenderGeojsonFilter(QgsServerFilter):
                 QgsMessageLog.logMessage(
                     "RenderGeojson.responseComplete ::   {}".format(traceback.format_exc()))
                 request.setResponseHeader('Content-type', 'text/plain')
-                request.appendBody('Error: {}'.format(str(e)).encode('utf-8'))
+                request.appendBody(b'Unhandled error')
+                request.appendBody(traceback.format_exc().encode('utf-8'))
 
 
 class RenderGeojsonServer:
