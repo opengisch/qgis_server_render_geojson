@@ -154,6 +154,8 @@ class RenderGeojsonFilter(QgsServerFilter):
                 event_loop.exec_()
 
                 img = renderer.renderedImage()
+                img.setDotsPerMeterX(dpi * 39.37)
+                img.setDotsPerMeterY(dpi * 39.37);
                 image_data = QByteArray()
                 buf = QBuffer(image_data)
                 buf.open(QIODevice.WriteOnly)
