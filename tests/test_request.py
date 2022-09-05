@@ -46,6 +46,11 @@ def gj_filter(test_data_path):
     filt.test_request = test_request
     return filt
 
+
+"""
+If a mandatory parameter is missing, the server should send a response that
+contains the name of the parameter.
+"""
 @pytest.mark.parametrize('mandatory_param', ['GEOJSON', 'STYLE', 'WIDTH', 'HEIGHT', 'BBOX'])
 def test_mandatory_params(gj_filter, mandatory_param):
     params = {
@@ -61,6 +66,11 @@ def test_mandatory_params(gj_filter, mandatory_param):
 
     assert mandatory_param.encode('utf-8') in response
 
+
+"""
+If the bounding box format is not correct, make sure the
+server returns an information about the problem.
+"""
 def test_bad_bbox(gj_filter):
     headers, response = gj_filter.test_request(gj_filter, {
             'SERVICE': 'RENDERGEOJSON',
@@ -72,6 +82,7 @@ def test_bad_bbox(gj_filter):
             })
 
     assert b'BBOX' in response
+
 
 @pytest.mark.parametrize('test_data_path', [None])
 def test_get_no_prefix_path(gj_filter):
